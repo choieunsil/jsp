@@ -9,11 +9,21 @@
 	src="http://code.jquery.com/jquery-latest.min.js">
 	
 </script>
+<script type="text/javascript">
+	function load() {
+		var jq = $.get('lotto.jsp').complete(function() {
+			$("#lotto").html(jq.responseText);
+		});
+	}
+	$(function() {
+		$("#button").click(load);
+	})
+</script>
 </head>
 <body>
 	<div id="lotto"></div>
 	<form onsubmit="return false">
-		<input type="submit" value="숫자출력" onclick="$('#lotto').load('lotto.jsp')">
+		<input id="button" type="submit" value="숫자출력">
 	</form>
 </body>
 </html>
